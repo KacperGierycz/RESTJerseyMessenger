@@ -1,18 +1,25 @@
 package rest.jersey.messenger.resources;
 
+import java.util.List;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import rest.jersey.messenger.model.Message;
+import rest.jersey.messenger.service.MessageService;
+
 @Path("/messages")
-@Produces(MediaType.TEXT_PLAIN)
 public class MessageResource {
 	
+	MessageService messageService = new MessageService ();
+	
 	@GET
-	public String getMessage() {
+	@Produces(MediaType.APPLICATION_XML)
+	public List<Message> getMessages() {
 		
-		return "Hello World";
+		return messageService.getAllMessages();
 	}
 	
 
