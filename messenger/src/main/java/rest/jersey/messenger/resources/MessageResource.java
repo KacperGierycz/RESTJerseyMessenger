@@ -59,7 +59,7 @@ public class MessageResource {
 		return messageService.getMessage(messageId);
 	}
 	
-	@Path("/{messageID}/comments")
+	@Path("/{messageId}/comments")
 	public CommentResource getCommentResource() {
 		return new CommentResource();
 	}
