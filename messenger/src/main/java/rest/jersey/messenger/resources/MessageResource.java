@@ -1,5 +1,7 @@
 package rest.jersey.messenger.resources;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 import javax.ws.rs.BeanParam;
@@ -12,9 +14,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.core.UriInfo;
 
 import rest.jersey.messenger.model.Message;
 import rest.jersey.messenger.service.MessageService;
@@ -38,12 +42,18 @@ public class MessageResource {
 	}
 	
 	@POST
-	public Response addMessage(Message message) {
+	public Response addMessage(Message message, @Context UriInfo uriInfo) throws URISyntaxException {
 		Message newMessage= messageService.addMessage(message);		
-		 return Response.status(Status.CREATED)
+		String nMessageId=String.valueOf(newMessage.getId());
+		URI uri=uriInfo.getAbsolutePathBuilder().path(nMessageId).build();
+	
+		 return Response.created(uri)
+				 
 				 .entity(newMessage)
 				 .build();
 	}
+//	status(Status.CREATED)
+	
 	
 	@PUT
 	@Path("/{messageId}")
