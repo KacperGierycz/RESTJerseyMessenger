@@ -42,7 +42,7 @@ public class MessageResource {
 	}
 	
 	@POST
-	public Response addMessage(Message message, @Context UriInfo uriInfo) throws URISyntaxException {
+	public Response addMessage(Message message, @Context UriInfo uriInfo) {
 		Message newMessage= messageService.addMessage(message);		
 		String nMessageId=String.valueOf(newMessage.getId());
 		URI uri=uriInfo.getAbsolutePathBuilder().path(nMessageId).build();

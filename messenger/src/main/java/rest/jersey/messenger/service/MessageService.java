@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import rest.jersey.messenger.database.DatabaseClass;
+import rest.jersey.messenger.exception.DataNotFoundException;
 import rest.jersey.messenger.model.Message;
 
 public class MessageService {
@@ -44,9 +45,14 @@ public class MessageService {
 	
 	
 	
-	public Message getMessage(long Id) {
+	public Message getMessage(long id) {
+		Message message = messages.get(id);
+		if(message == null) {
 
-		return messages.get(Id);
+			throw new DataNotFoundException("Message with id:"+ id + "not found");
+		}
+
+		return message;
 	}
 	
 	public Message addMessage(Message message) {
