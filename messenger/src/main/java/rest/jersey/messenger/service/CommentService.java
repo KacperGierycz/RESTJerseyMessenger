@@ -35,7 +35,7 @@ public class CommentService {
 	
 	public Comment updateComment(long messageId, Comment comment) {
 		Map<Long ,Comment> comments = messages.get(messageId).getComments();
-		if(comment.getId()<=0) {
+		if(comment.getId()==0) {
 			return null;
 		}
 		comments.put(comment.getId(),comment);

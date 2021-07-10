@@ -12,10 +12,10 @@ public class Comment {
 	public Comment() {
 	}
 
-	public Comment(long id, String message, Date created, String author) {
+	public Comment(long id, String message, String author) {
 		this.id = id;
 		this.message = message;
-		this.created = created;
+		this.created = new Date();
 		this.author = author;
 	}
 
