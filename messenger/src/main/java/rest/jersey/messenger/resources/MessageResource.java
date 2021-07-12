@@ -70,8 +70,23 @@ public class MessageResource {
 	
 	@GET
 	@Path("/{messageId}")
-	public Message getMessage(@PathParam("messageId")long messageId) {
-		return messageService.getMessage(messageId);
+	public Message getMessage(@PathParam("messageId")long messageId, @Context UriInfo uriInfo) {
+		Message message= messageService.getMessage(messageId);
+		String uri = getUriForSelf(uriInfo, message);
+		
+		
+		message.addLink(uri,"self");
+		return message;
+		
+	}
+
+	private String getUriForSelf(UriInfo uriInfo, Message message) {
+		String uri = uriInfo.getBaseUriBuilder()
+				.path(MessageResource.class)
+				.path(Long.toString(message.getId()))
+				.build()
+				.toString();
+		return uri;
 	}
 	
 	@Path("/{messageId}/comments")
