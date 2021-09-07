@@ -21,4 +21,9 @@ This is how I figure out how Jersey development can be a Road Throo Hell.
 Yes found some usefull information online [be developer to developer guide](http://itsystemengineer.blogspot.com/2017/09/restful-api-jax-rs-jersey-2-on-tomcat-9.html)
  and one [from Tomcat itself](http://tomcat.apache.org/whichversion.html).
 
-On soving the bug wich ocured from nowhere whene I was about to runn for a README writing purposes. Suddenly the Jersye was using it's version from the other bundle
+Jersey is a wonderful system and the efects are great but have to be carefull.
+
+<br>
+
+How it works 
+
