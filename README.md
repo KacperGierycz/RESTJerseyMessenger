@@ -36,6 +36,22 @@ Jersey is a wonderful system and the efects are great but have to be carefull at
 * Custom Exception hanlers for data no found ex." Not found"
 * Links are deployed after get to messages explanation later on
 
+# The Resources 
+resources are using javax.ws.rs. annotations 
+@Path(/messages)
+@Comsumes @Produces (MediaType.App..Jason)
+injecting service
+@GET,@POST,@PUT,@DELETE,@PUT
+on singel once with ID @PATH(/{messageId}) then in method paramether @PathParam ("messageId")
+when there is a response in method paramether @Context UriInfo to Response.create(uri) from uri.getPath...
+
+# Creation of Links hapens in Resource 
+when call to get message Strings are invoking getUriFor Self, Profile, Comments and puting them into message. 
+GetUrifor gets UriInfo , and build URI with URI builder and path.
+
+
+![get message](https://user-images.githubusercontent.com/57790974/132459066-120b03fa-5880-492b-8c3d-1dbfc481517e.jpg)
+
 
 
 
